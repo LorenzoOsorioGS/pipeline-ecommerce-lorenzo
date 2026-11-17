@@ -1,6 +1,6 @@
 # Pipeline E-Commerce Data → MongoDB (Avaliação N3)
 
-Implementação do pipeline de ingestão especificado na N2 da disciplina Desenvolvimento com Linguagens Disruptivas I (ADS, UniCESUSC), Equipe10. Autor: Lorenzo Osório Gonçalves da Silveira.
+Implementação do pipeline de ingestão especificado na N2 da disciplina Desenvolvimento com Linguagens Disruptivas I (ADS, UniCESUSC), Equipe10. Autores: Lorenzo Osório Gonçalves da Silveira e Kevin Kuznier.
 
 ## Objetivo e cenário
 
