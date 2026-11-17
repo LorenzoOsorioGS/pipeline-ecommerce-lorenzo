@@ -1,0 +1,26 @@
+cidade,estado,pedidos,pedidos_1_item,pct_1_item
+Udaipur,Rajasthan,13,9.00,69.20
+Amritsar,Punjab,9,6.00,66.70
+Chandigarh,Haryana,14,9.00,64.30
+Bhopal,Madhya Pradesh,22,13.00,59.10
+Gangtok,Sikkim,12,7.00,58.30
+Jaipur,Rajasthan,19,11.00,57.90
+Simla,Himachal Pradesh,14,8.00,57.10
+Kolkata,West Bengal,22,12.00,54.50
+Hyderabad,Andhra Pradesh,15,8.00,53.30
+Kohima,Nagaland,15,8.00,53.30
+Bangalore,Karnataka,21,11.00,52.40
+Chandigarh,Punjab,16,8.00,50.00
+Mumbai,Maharashtra,68,30.00,44.10
+Delhi,Delhi,25,11.00,44.00
+Thiruvananthapuram,Kerala,16,7.00,43.80
+Kashmir,Jammu and Kashmir,14,6.00,42.90
+Pune,Maharashtra,22,9.00,40.90
+Indore,Madhya Pradesh,76,31.00,40.80
+Surat,Gujarat,10,4.00,40.00
+Lucknow,Uttar Pradesh,13,5.00,38.50
+Chennai,Tamil Nadu,8,3.00,37.50
+Goa,Goa,14,5.00,35.70
+Ahmedabad,Gujarat,17,6.00,35.30
+Allahabad,Uttar Pradesh,9,3.00,33.30
+Patna,Bihar,16,5.00,31.20

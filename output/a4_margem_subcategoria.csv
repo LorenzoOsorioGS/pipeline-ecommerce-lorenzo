@@ -1,0 +1,18 @@
+categoria,subcategoria,itens,faturamento,lucro,margem_pct,itens_com_prejuizo
+Furniture,Tables,17,22614.00,-4011.00,-17.74,11
+Electronics,Electronic Games,79,39168.00,-1236.00,-3.16,40
+Clothing,Saree,210,53511.00,352.00,0.66,98
+Furniture,Chairs,74,34222.00,577.00,1.69,39
+Electronics,Phones,83,46119.00,2207.00,4.79,41
+Clothing,Kurti,47,3361.00,181.00,5.39,14
+Furniture,Furnishings,73,13484.00,844.00,6.26,30
+Furniture,Bookcases,79,56861.00,4888.00,8.60,22
+Clothing,Trousers,39,30039.00,2847.00,9.48,15
+Electronics,Printers,74,58252.00,5964.00,10.24,25
+Clothing,Skirt,64,1946.00,235.00,12.08,18
+Clothing,Leggings,53,2106.00,260.00,12.35,16
+Clothing,Stole,192,18546.00,2559.00,13.80,52
+Clothing,Hankerchief,198,14608.00,2098.00,14.36,42
+Clothing,Shirt,69,7555.00,1131.00,14.97,12
+Electronics,Accessories,72,21728.00,3559.00,16.38,16
+Clothing,T-shirt,77,7382.00,1500.00,20.32,12
