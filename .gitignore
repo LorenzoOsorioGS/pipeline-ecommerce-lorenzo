@@ -1,0 +1,29 @@
+# credenciais: nunca vão para o Git
+.env
+kaggle.json
+
+# dados (baixados e gerados pelo pipeline); só as pastas vazias são versionadas
+data/*
+!data/raw/
+!data/processed/
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ambiente Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# material da N2 que fica só na máquina do autor (o decisoes.md é a exceção: o README aponta para ele)
+docs/N2/*
+!docs/N2/decisoes.md
+profiling/
+
+# MongoDB portátil (sem Docker)
+.mongo-local/
+
+# arquivos temporários do Word/Office
+~$*
