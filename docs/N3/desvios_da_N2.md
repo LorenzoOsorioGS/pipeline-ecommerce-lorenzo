@@ -3,6 +3,8 @@
 A regra foi: a N2 vence. Onde a implementação precisou ser diferente, o desvio está aqui, com o motivo.
 Nenhuma regra V/T, coleção, índice ou análise da N2 foi retirada.
 
+**Atualização de 18/11/2026:** a N2 foi revisada para descrever o que a N3 implementou. Os itens abaixo já constam nela e ficam aqui como registro do que mudou e do motivo.
+
 ## 1. MongoDB sem Docker na máquina do autor (infraestrutura)
 
 - **N2:** Docker Compose sobe MongoDB 7 e mongo-express.
@@ -31,3 +33,9 @@ Nenhuma regra V/T, coleção, índice ou análise da N2 foi retirada.
 
 - **N2:** a validação aprova ou rejeita e a transformação segue.
 - **N3:** para cada etapa rodar sozinha (`--step transform` sem refazer a validação), as linhas aprovadas são gravadas em `data/processed/_validado/` antes da transformação. É um detalhe de execução, não uma camada nova: a camada prata continua sendo `data/processed/*.parquet`.
+
+## 6. Logs do banco
+
+- **N2 original:** previa o log do pipeline, sem log das consultas do banco.
+- **N3:** o `scripts/mongo_local.ps1` sobe o MongoDB com o profiler ligado (`--profile 2 --slowms 0`) e grava `logs/mongod.log`. O `scripts/consultas_log.py` resume esse arquivo em `logs/consultas.log`. A pasta `logs/` fica fora do Git. O profiler cria a coleção `system.profile`, que o `inspecionar.py` e o visualizador não listam.
+- **Limite:** vale para o MongoDB portátil. O `docker-compose.yml` não foi alterado.

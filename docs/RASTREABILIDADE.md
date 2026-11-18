@@ -100,3 +100,6 @@ Testes: [`tests/test_load.py`](../tests/test_load.py) (idempotência e atualiza�
 | Docker Compose com MongoDB 7 + mongo-express | [`docker-compose.yml`](../docker-compose.yml) (volume e healthcheck) |
 | Python + pandas + pyarrow + pymongo + kagglehub + matplotlib + pytest + python-dotenv | [`requirements.txt`](../requirements.txt), [`config.py`](../src/pipeline/config.py) + `.env` |
 | Execução por etapa (papel do orquestrador na N3) | [`src/main.py`](../src/main.py) `--step` |
+| MongoDB 7 portátil, sem Docker | [`scripts/mongo_local.ps1`](../scripts/mongo_local.ps1) |
+| Visualização sem Docker | [`scripts/visualizar.py`](../scripts/visualizar.py) (porta 8081, somente leitura) |
+| Logs do pipeline e do banco (5.5) | [`config.py` → `configurar_logging()`](../src/pipeline/config.py), [`scripts/mongo_local.ps1`](../scripts/mongo_local.ps1) e [`scripts/consultas_log.py`](../scripts/consultas_log.py) → `logs/mongod.log`, `logs/consultas.log` |

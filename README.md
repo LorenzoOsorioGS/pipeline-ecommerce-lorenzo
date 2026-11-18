@@ -1,6 +1,6 @@
 # Pipeline E-Commerce Data → MongoDB (Avaliação N3)
 
-Implementação do pipeline de ingestão especificado na N2 da disciplina Desenvolvimento com Linguagens Disruptivas I (ADS, UniCESUSC), Equipe10. Autores: Lorenzo Osório Gonçalves da Silveira e Kevin Kuznier.
+Implementação do pipeline de ingestão especificado na N2 da disciplina Desenvolvimento com Linguagens Disruptivas I (ADS, UniCESUSC), Equipe10. Autores: Lorenzo Osório Gonçalves da Silveira e Kevin Kristopher Kuznier.
 
 ## Objetivo e cenário
 
@@ -122,6 +122,12 @@ powershell -ExecutionPolicy Bypass -File scripts\mongo_local.ps1          # sobe
 powershell -ExecutionPolicy Bypass -File scripts\mongo_local.ps1 -Parar   # para
 ```
 
+### Logs
+
+O pipeline escreve o log no terminal. Para guardar em arquivo, no PowerShell: `.\.venv\Scripts\python.exe src\main.py --step all | Tee-Object logs\pipeline.log`.
+
+O `mongo_local.ps1` liga o profiler do MongoDB e grava toda operação em `logs/mongod.log`. Para ver uma linha por consulta, rode `python scripts/consultas_log.py` e abra `logs/consultas.log`.
+
 ## Saídas esperadas (trechos reais)
 
 Resumo impresso pelo `main.py` na primeira execução:
@@ -195,7 +201,7 @@ src/main.py                    CLI (--step extract|validate|transform|load|analy
 src/pipeline/                  config, extract, validate, transform, load, relatorio, referencias
 src/pipeline/analyses/         a1…a4 (uma análise por arquivo) + comum
 tests/                         pytest: datas, regras V/T, HMAC, idempotência da carga
-scripts/                       demo.ps1, demo.sh, inspecionar.py, mongo_local.ps1, visualizar.py
+scripts/                       demo.ps1, demo.sh, inspecionar.py, mongo_local.ps1, visualizar.py, consultas_log.py
 docs/RASTREABILIDADE.md        regra da N2 → código → como demonstrar
 docs/N3/                       desvios, roteiro de apresentação, perguntas sobre o código
 docker-compose.yml             MongoDB 7 + mongo-express (volume e healthcheck)

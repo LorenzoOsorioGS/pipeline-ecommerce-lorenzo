@@ -1,10 +1,12 @@
 # Roteiro da apresentação da N3 (10 minutos)
 
+A N2 e a N3 são apresentadas juntas: a N2 é a especificação e a N3 é a implementação. Os slides indicam qual item da N2 cada parte atende.
+
 Antes de começar: MongoDB no ar (`scripts\mongo_local.ps1` ou `docker compose up -d`), terminal na raiz do projeto, navegador em http://localhost:8081, VS Code aberto.
 
 | Tempo | O que mostrar | O que dizer |
 |---|---|---|
-| 0:00–1:00 | README (topo + diagrama) | "Implementei o pipeline da minha N2: o gerente comercial que fecha o mês por praça. Cinco etapas, cada regra da N2 com código próprio." |
+| 0:00–1:00 | README (topo + diagrama) | "Implementamos o pipeline da N2: o gerente comercial que fecha o mês por praça. Cinco etapas, cada regra da N2 com código próprio." |
 | 1:00–2:00 | `docs/RASTREABILIDADE.md` | "Cada regra da especificação (V1–V9, T1–T12, coleções, índices, análises) tem uma linha apontando para a função que a implementa. O que mudou está em `desvios_da_N2.md`, com o motivo." |
 | 2:00–2:45 | `scripts\demo.ps1`, passos 1–3 (sobe o banco, limpa, EXTRACT) | "O kagglehub baixa o dataset e o manifesto guarda o hash de cada arquivo. Se o Kaggle cair, uso o CSV manual." |
 | 2:45–3:45 | passo 4 (VALIDATE) + `output/relatorio_qualidade.md` | "60 linhas vazias descartadas pela V1. Nada some em silêncio: cada linha descartada está em `output/rejeitados/` com o motivo." |
@@ -17,3 +19,5 @@ Antes de começar: MongoDB no ar (`scripts\mongo_local.ps1` ou `docker compose u
 | 9:30–10:00 | README, "Limitações e evolução" | "86 KB não são Big Data. O desenho escala: Kafka, Spark e Airflow entram sem mudar as regras nem o modelo." |
 
 Se o tempo apertar, pule o pytest e mostre só o gráfico da A1.
+
+Se pedirem os logs: abra a pasta `logs\`. O `pipeline.log` mostra as etapas e as regras, o `mongod.log` traz toda operação do banco e o `consultas.log`, gerado por `scripts\consultas_log.py`, mostra uma linha por consulta.
