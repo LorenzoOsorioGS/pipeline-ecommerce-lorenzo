@@ -34,12 +34,12 @@ PIPELINE = [
 
 
 def executar(db) -> dict:
-    df = rodar(db, PIPELINE, SAIDA).sort_values("margem_pct")
+    df = rodar(db, PIPELINE, SAIDA).sort_values(["margem_pct", "subcategoria"])
     csv = exportar_csv(df[["categoria", "subcategoria", "itens", "faturamento", "lucro", "margem_pct",
                            "itens_com_prejuizo"]], "a4_margem_subcategoria")
 
     fig, ax = figura(9, 6.5)
-    ordem = df.sort_values("margem_pct", ascending=False)
+    ordem = df.iloc[::-1]
     rotulos = [f"{s} ({c})" for s, c in zip(ordem["subcategoria"], ordem["categoria"])]
     cores = [VERMELHO if m < 0 else AZUL for m in ordem["margem_pct"]]
     ax.barh(rotulos, ordem["margem_pct"], color=cores, height=0.7)

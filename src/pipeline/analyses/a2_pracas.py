@@ -36,12 +36,12 @@ PIPELINE = [
 
 
 def executar(db) -> dict:
-    df = rodar(db, PIPELINE, SAIDA).sort_values("faturamento", ascending=False)
+    df = rodar(db, PIPELINE, SAIDA).sort_values(["faturamento", "cidade"], ascending=[False, True])
     csv = exportar_csv(df[["cidade", "estado", "pedidos", "faturamento", "lucro", "ticket_medio",
                            "clientes_distintos"]], "a2_pracas")
 
     fig, ax = figura(9, 7.5)
-    ordem = df.sort_values("faturamento")
+    ordem = df.iloc[::-1]
     rotulos = [f"{c} / {e}" for c, e in zip(ordem["cidade"], ordem["estado"])]
     cores = [VERMELHO if lc < 0 else AZUL for lc in ordem["lucro"]]
     ax.barh(rotulos, ordem["faturamento"], color=cores, height=0.7)

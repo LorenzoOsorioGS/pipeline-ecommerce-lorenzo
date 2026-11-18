@@ -37,10 +37,10 @@ PIPELINE = [
 
 def executar(db) -> dict:
     df = rodar(db, PIPELINE, SAIDA)
-    pracas = df[df["tipo"] == "praca"].sort_values("pct_1_item", ascending=False)
+    pracas = df[df["tipo"] == "praca"].sort_values(["pct_1_item", "cidade"], ascending=[False, True])
     combos = df[df["tipo"] == "combinacao"].copy()
     combos["categorias"] = combos["categorias"].map(lambda c: " + ".join(c))
-    combos = combos.sort_values("pedidos", ascending=False)
+    combos = combos.sort_values(["pedidos", "categorias"], ascending=[False, True])
     perfil = df[df["tipo"] == "perfil"].sort_values("item_unico", ascending=False)
 
     exportar_csv(pracas[["cidade", "estado", "pedidos", "pedidos_1_item", "pct_1_item"]], "a3_venda_casada_pracas")
@@ -51,7 +51,7 @@ def executar(db) -> dict:
     um_item = int(pracas["pedidos_1_item"].sum())
     geral = um_item / total * 100
     fig, ax = figura(9, 7.5)
-    ordem = pracas.sort_values("pct_1_item")
+    ordem = pracas.iloc[::-1]
     ax.barh([f"{c} / {e}" for c, e in zip(ordem["cidade"], ordem["estado"])], ordem["pct_1_item"],
             color=AZUL, height=0.7)
     ax.axvline(geral, color=TINTA_2, linestyle="--", linewidth=1)
