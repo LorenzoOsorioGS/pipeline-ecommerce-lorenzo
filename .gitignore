@@ -27,3 +27,6 @@ profiling/
 
 # arquivos temporários do Word/Office
 ~$*
+
+# logs do banco e do pipeline (gerados na execução)
+logs/

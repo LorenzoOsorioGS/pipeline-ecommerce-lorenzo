@@ -20,7 +20,7 @@ db = MongoClient(os.getenv("MONGO_URI", "mongodb://localhost:27017"), serverSele
     os.getenv("MONGO_DB", "ecommerce")]
 
 if len(sys.argv) < 2 or sys.argv[1] == "contar":
-    for nome in sorted(db.list_collection_names()):
+    for nome in sorted(db.list_collection_names(filter={"name": {"$not": {"$regex": "^system[.]"}}})):
         print(f"{nome:<32} {db[nome].count_documents({}):>5} documentos")
 elif sys.argv[1] == "pedido":
     oid = sys.argv[2] if len(sys.argv) > 2 else "B-25608"

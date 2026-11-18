@@ -10,7 +10,7 @@ param([switch]$Parar)
 $ErrorActionPreference = "Stop"
 $raiz = Split-Path $PSScriptRoot -Parent
 $dados = Join-Path $raiz ".mongo-local\db"
-$logs = Join-Path $raiz ".mongo-local"
+$logs = Join-Path $raiz "logs"   # log do banco: profiler ligado, toda consulta vai para logs\mongod.log
 $mongod = if ($env:MONGOD_PATH) { $env:MONGOD_PATH } else { "$env:USERPROFILE\tools\mongodb-win32-x86_64-windows-7.0.25\bin\mongod.exe" }
 $python = if (Test-Path "$raiz\.venv\Scripts\python.exe") { "$raiz\.venv\Scripts\python.exe" } else { "python" }
 
@@ -27,14 +27,14 @@ if ($Parar) {
 }
 
 if (-not (Test-Path $mongod)) { throw "mongod.exe não encontrado em $mongod. Defina MONGOD_PATH (ver README)." }
-New-Item -ItemType Directory -Force $dados | Out-Null
+New-Item -ItemType Directory -Force $dados, $logs | Out-Null
 
 if (Testa-Porta 27017) {
     Write-Output "MongoDB já está respondendo em 127.0.0.1:27017."
 } else {
     Start-Process -FilePath $mongod -WindowStyle Hidden -ArgumentList @(
         "--dbpath", "`"$dados`"", "--bind_ip", "127.0.0.1", "--port", "27017",
-        "--logpath", "`"$logs\mongod.log`"", "--logappend")
+        "--logpath", "`"$logs\mongod.log`"", "--logappend", "--profile", "2", "--slowms", "0")
     for ($i = 0; $i -lt 40 -and -not (Testa-Porta 27017); $i++) { Start-Sleep -Milliseconds 500 }
     if (-not (Testa-Porta 27017)) { throw "MongoDB não subiu; veja $logs\mongod.log" }
     Write-Output "MongoDB 7 rodando em 127.0.0.1:27017 (dados em .mongo-local\db)."

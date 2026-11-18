@@ -34,7 +34,7 @@ class Handler(BaseHTTPRequestHandler):
         partes = [unquote(p) for p in self.path.strip("/").split("/") if p]
         if not partes:
             linhas = "".join(f"<tr><td><a href='/{quote(c)}'>{c}</a></td><td>{DB[c].estimated_document_count()}</td></tr>"
-                             for c in sorted(DB.list_collection_names()))
+                             for c in sorted(DB.list_collection_names(filter={"name": {"$not": {"$regex": "^system[.]"}}})))
             corpo = f"<h2>Coleções</h2><table><tr><th>coleção</th><th>documentos</th></tr>{linhas}</table>"
         elif len(partes) == 1:
             col = DB[partes[0]]
